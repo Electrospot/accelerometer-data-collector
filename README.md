@@ -13,14 +13,14 @@ The device is a Punchthrough Bean with an ADXL345 accelerometer (on a Sparkfun b
 
 Pin conenction between the Bean and ADXL345 are as follows:
 
-  | Bean | ADXL345 |
-  |------|---------|
-  | GND  | GND     |
-  | VCC  | VCC     |
-  | 2    | CS      |
-  | 3    | SDA     |
-  | 4    | SDO     |
-  | 5    | SCL     |
+      | Bean | ADXL345 |
+      |------|---------|
+      | GND  | GND     |
+      | VCC  | VCC     |
+      | 2    | CS      |
+      | 3    | SDA     |
+      | 4    | SDO     |
+      | 5    | SCL     |
 
 Programming
 -----------
@@ -29,7 +29,7 @@ A bean can be programmed with the standard Bean Loader and Arduino software, des
 
     https://punchthrough.com/bean/getting-started-osx/
     https://punchthrough.com/bean/getting-started-windows/
-    http:// arduino.cc
+    http://arduino.cc
 
 Programming on Linux is possible via ICSP and an AVR programmer, and if you know what that means I assume you know how to do it. 
 
