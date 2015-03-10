@@ -19,7 +19,7 @@ void writeRegister(char registerAddress, char value){
     digitalWrite(CS, HIGH);
 }
 
-void readRegister(char registerAddress, int numBytes, char * values){
+void readRegister(char registerAddress, int numBytes, unsigned char * values){
     char address = 0x80 | registerAddress;    
     if(numBytes > 1)address = address | 0x40;
 
