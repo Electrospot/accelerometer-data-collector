@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui_plot/ui_plot.ui'
+# Form implementation generated from reading ui file 'ui_plot.ui'
 #
-# Created: Wed Mar 11 13:56:30 2015
+# Created: Fri Mar 13 14:42:57 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
 import PyQt4.Qwt5 as Qwt
+from PyQt4 import QtCore, QtGui
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -30,17 +30,28 @@ class Ui_MainWindow(object):
         MainWindow.resize(808, 769)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.verticalLayout = QtGui.QVBoxLayout(self.centralwidget)
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.gridLayout = QtGui.QGridLayout(self.centralwidget)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
         self.xPlot = Qwt.QwtPlot(self.centralwidget)
         self.xPlot.setObjectName(_fromUtf8("xPlot"))
-        self.verticalLayout.addWidget(self.xPlot)
+        self.gridLayout.addWidget(self.xPlot, 0, 0, 1, 1)
         self.yPlot = Qwt.QwtPlot(self.centralwidget)
         self.yPlot.setObjectName(_fromUtf8("yPlot"))
-        self.verticalLayout.addWidget(self.yPlot)
+        self.gridLayout.addWidget(self.yPlot, 1, 0, 1, 1)
         self.zPlot = Qwt.QwtPlot(self.centralwidget)
         self.zPlot.setObjectName(_fromUtf8("zPlot"))
-        self.verticalLayout.addWidget(self.zPlot)
+        self.gridLayout.addWidget(self.zPlot, 2, 0, 1, 1)
+        self.xSpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.xSpecPlot.setObjectName(_fromUtf8("xSpecPlot"))
+        self.gridLayout.addWidget(self.xSpecPlot, 0, 1, 1, 1)
+        self.ySpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.ySpecPlot.setObjectName(_fromUtf8("ySpecPlot"))
+        self.gridLayout.addWidget(self.ySpecPlot, 1, 1, 1, 1)
+        self.zSpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.zSpecPlot.setObjectName(_fromUtf8("zSpecPlot"))
+        self.gridLayout.addWidget(self.zSpecPlot, 2, 1, 1, 1)
+        self.gridLayout.setColumnStretch(0, 6)
+        self.gridLayout.setColumnStretch(1, 4)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 808, 20))
