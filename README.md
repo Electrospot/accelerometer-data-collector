@@ -4,12 +4,14 @@ accelerometer-study
 Introduction
 ------------
 
-This is code for Spring 2015's accelerometer group study.
+This is a data collection and analysis package for accelerometer data, collected using an ADXL345 accelerometer and a Punchthrough Bean wireless Bluetooth Low Energy board.
 
 Hardware
 --------
 
-The device is a Punchthrough Bean with an ADXL345 accelerometer (on a Sparkfun breakout board).  The internal accelerometer on the Bean is not used because it cannot be sampled fast enough, due to the overhead of communication from  accelerometer (connected to the BLE module) to ATMega328p on the Bean. 
+![Mame](https://raw.githubusercontent.com/tnishimura/accelerometer-study/master/img/mame.png)
+
+The device is a Punchthrough Bean with an ADXL345 accelerometer (on a Sparkfun breakout board).  Though the Bean has a built-in accelerometer as well, it is not used because it cannot be sampled fast enough, due to the overhead of communication from  accelerometer (connected to the BLE module) to ATMega328p on the Bean. 
 
 Pin conenction between the Bean and ADXL345 are as follows:
 
@@ -31,12 +33,17 @@ A bean can be programmed with the standard Bean Loader and Arduino software, des
     https://punchthrough.com/bean/getting-started-windows/
     http://arduino.cc
 
-Programming on Linux is possible via ICSP and an AVR programmer, and if you know what that means I assume you know how to do it. 
+Programming on Linux is possible via ICSP and an AVR programmer.
+You will also need my library for using the ADXL345 from here:
+
+    https://github.com/tnishimura/ADXL345Arduino
+
 
 Contents
 --------
 
--  `bean/` - contains arduino code.  There's only one version right now, which uses serial-emulation. But soon there will be a version with raw-BLE/GATT support.
+-  `bean/BeanADXL345.ino` -  Bean/Arduino code which uses serial-emulation.  Samples at around 35Hz.
+-  `bean/BeanADXL345Binary.ino` - A more refined version, which communicates via raw BLE using the Bean's `scratch` characteristics.  Samples at over 100HZ.
 
 
 Communication with the Bean
@@ -44,11 +51,11 @@ Communication with the Bean
 
 On OSX/Windows: in Bean Loader, you can create a virtual serial port connection to a Bean and then you can read from it with suitable software (e.g. screen or pyserial).
 
-On Linux: details coming.
+On Linux: There is code in `linux/`, details coming soon.
 
 
-Data Format
------------
+Seial Data Format
+-----------------
 
 Each line from the virtualized serial port has the following format:
 
@@ -59,4 +66,9 @@ Each line from the virtualized serial port has the following format:
 -  `xN` x coordinate from accelerometer.  Range from -511 to +512, mapping to the acceleration in -4g to 4g (`g` == 9.8 m/s/s).
 -  `yN` y coordinate from accelerometer.  
 -  `zN` z coordinate from accelerometer.  
+
+Binary Data Format
+------------------
+
+Details coming soon...
 
