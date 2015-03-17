@@ -2,12 +2,11 @@
 
 # Form implementation generated from reading ui file 'ui_plot.ui'
 #
-# Created: Fri Mar 13 14:42:57 2015
+# Created: Tue Mar 17 11:25:37 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
-import PyQt4.Qwt5 as Qwt
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -32,22 +31,22 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.gridLayout = QtGui.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.xPlot = Qwt.QwtPlot(self.centralwidget)
+        self.xPlot = QwtPlot(self.centralwidget)
         self.xPlot.setObjectName(_fromUtf8("xPlot"))
         self.gridLayout.addWidget(self.xPlot, 0, 0, 1, 1)
-        self.yPlot = Qwt.QwtPlot(self.centralwidget)
+        self.yPlot = QwtPlot(self.centralwidget)
         self.yPlot.setObjectName(_fromUtf8("yPlot"))
         self.gridLayout.addWidget(self.yPlot, 1, 0, 1, 1)
-        self.zPlot = Qwt.QwtPlot(self.centralwidget)
+        self.zPlot = QwtPlot(self.centralwidget)
         self.zPlot.setObjectName(_fromUtf8("zPlot"))
         self.gridLayout.addWidget(self.zPlot, 2, 0, 1, 1)
-        self.xSpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.xSpecPlot = QwtPlot(self.centralwidget)
         self.xSpecPlot.setObjectName(_fromUtf8("xSpecPlot"))
         self.gridLayout.addWidget(self.xSpecPlot, 0, 1, 1, 1)
-        self.ySpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.ySpecPlot = QwtPlot(self.centralwidget)
         self.ySpecPlot.setObjectName(_fromUtf8("ySpecPlot"))
         self.gridLayout.addWidget(self.ySpecPlot, 1, 1, 1, 1)
-        self.zSpecPlot = Qwt.QwtPlot(self.centralwidget)
+        self.zSpecPlot = QwtPlot(self.centralwidget)
         self.zSpecPlot.setObjectName(_fromUtf8("zSpecPlot"))
         self.gridLayout.addWidget(self.zSpecPlot, 2, 1, 1, 1)
         self.gridLayout.setColumnStretch(0, 6)
@@ -67,3 +66,4 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
 
+from Qwt import *
