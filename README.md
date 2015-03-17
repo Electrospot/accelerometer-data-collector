@@ -11,7 +11,7 @@ Hardware
 
 ![Mame](https://raw.githubusercontent.com/tnishimura/accelerometer-study/master/img/mame.png)
 
-The device is a Punchthrough Bean with an ADXL345 accelerometer (on a Sparkfun breakout board).  Though the Bean has a built-in accelerometer as well, it is not used because it cannot be sampled fast enough, due to the overhead of communication from  accelerometer (connected to the BLE module) to ATMega328p on the Bean. 
+The device is a [Punchthrough Bean](https://punchthrough.com/bean/) with an ADXL345 accelerometer (on a Sparkfun breakout board).  (Though the Bean has a built-in accelerometer as well, it is not used because it cannot be sampled fast enough, due to the overhead of communication from  accelerometer (connected to the BLE module) to ATMega328p on the Bean.)
 
 Pin conenction between the Bean and ADXL345 are as follows:
 
@@ -34,6 +34,7 @@ A bean can be programmed with the standard Bean Loader and Arduino software, des
     http://arduino.cc
 
 Programming on Linux is possible via ICSP and an AVR programmer.
+
 You will also need my library for using the ADXL345 from here:
 
     https://github.com/tnishimura/ADXL345Arduino
@@ -72,5 +73,8 @@ Each line from the virtualized serial port has the following format:
 Binary Data Format
 ------------------
 
-Details coming soon...
+For `BeanADXL345Binary.ino`, the `scratch1` characteristic has the three most recent samples from the ADXL345.  It is always twenty bytes, encoded 10 little-endian signed 16 byte integers.  The first of these integers is the timestamp (number of milliseconds since power-on) modulo'd to fit in a 16 bytes integer, and the next nine are 3 triplets of x,y,z coordinates.  (More details coming soon).
+
+
+
 
