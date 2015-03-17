@@ -10,17 +10,22 @@ use Time::HiRes qw/usleep/;
 use Pod::Usage;
 use Getopt::Long;
 
+use Cwd qw/abs_path/;
+use File::Basename qw/dirname/;
+use File::Spec::Functions qw/catfile/;
+
 my $result = GetOptions (
-    "input-file|i=s" => \(my $input_file = "dummy.txt"),
-    "port|p=i"       => \(my $pub_port = 5555),
+    "input-file|i=s" => \(my $input_file = catfile(dirname(abs_path($0)), "dummy.txt")),
     "no-repeat|n"    => \(my $no_repeat),
+    "port|p=i"       => \(my $zeromq_port = 5555),
+    "zeromq-target|t=s" => \(my $zeromq_target = "tcp://127.0.0.1"),
 );
 pod2usage(-verbose => 2, -noperldoc => 1) if (!$result);  
 
 ### initialize
 my $ctx = zmq_ctx_new() or die $!;
 my $socket = zmq_socket($ctx, ZMQ_PUB) or die $!;
-zmq_bind($socket, "tcp://127.0.0.1:$pub_port") == 0 or die $!;
+zmq_bind($socket, "$zeromq_target:$zeromq_port") == 0 or die $!;
 
 while (1){
     open my $fh, '<:crlf', $input_file;
