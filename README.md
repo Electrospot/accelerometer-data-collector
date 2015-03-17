@@ -44,6 +44,8 @@ Contents
 
 -  `bean/BeanADXL345.ino` -  Bean/Arduino code which uses serial-emulation.  Samples at around 35Hz.
 -  `bean/BeanADXL345Binary.ino` - A more refined version, which communicates via raw BLE using the Bean's `scratch` characteristics.  Samples at over 100HZ.
+-  `listener/noble` - A "listener", or an application to let you capture data from the bean, written in node.js and the noble library.  OS X and Linux.
+-  `listener/gatttool` - Another listener, which uses the gatttool command line utility. Linux only.
 
 
 Communication with the Bean
