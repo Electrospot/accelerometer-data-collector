@@ -6,7 +6,6 @@ use Data::Dumper;
 use ZMQ::LibZMQ3;
 use ZMQ::Constants ':all';
 use Time::HiRes qw/usleep/;
-# ZMQ_PUB ZMQ_SUB ZMQ_PUSH ZMQ_PULL ZMQ_REQ ZMQ_REP
 use Pod::Usage;
 use Getopt::Long;
 
@@ -22,6 +21,9 @@ my $result = GetOptions (
 );
 pod2usage(-verbose => 2, -noperldoc => 1) if (!$result);  
 
+# don't sleep if it is a serial port
+my $sleep = -f $input_file ? 10_000 : 0;
+
 ### initialize
 my $ctx = zmq_ctx_new() or die $!;
 my $socket = zmq_socket($ctx, ZMQ_PUB) or die $!;
@@ -35,7 +37,7 @@ while (1){
         my $msg = zmq_msg_init_data($line) or die $!;
         zmq_msg_send($msg, $socket) != -1 or die $!;
         zmq_msg_close($msg) == 0 or die $!;
-        usleep(10_000);
+        usleep($sleep) if $sleep;
     }
     close $fh;
     break if ($no_repeat);
