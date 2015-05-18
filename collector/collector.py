@@ -235,7 +235,7 @@ def write_xyz(file_name, t,x,y,z):
     assert t.size == y.size
     assert t.size == z.size
     for i in range(0,t.size):
-        f.write("%0.4f\t%0.4f\t%0.4f\t%0.4f\n" % (t[i], x[i], y[i], z[i]))
+        f.write("%0.3f\t%0.3f\t%0.3f\t%0.3f\n" % (t[i], x[i], y[i], z[i]))
     f.close()
 
 if __name__ == "__main__":
