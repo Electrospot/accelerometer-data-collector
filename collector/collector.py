@@ -52,6 +52,13 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
         self.previewPlot.enableAxis(Qwt.QwtPlot.yLeft, False)
         self.previewPlot.enableAxis(Qwt.QwtPlot.xBottom, False)
 
+        QObject.connect(self.xCalScaling, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+        QObject.connect(self.yCalScaling, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+        QObject.connect(self.zCalScaling, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+        QObject.connect(self.xCalOffset, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+        QObject.connect(self.yCalOffset, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+        QObject.connect(self.zCalOffset, SIGNAL('valueChanged(double)'), lambda : self.calibration_changed())
+
         # background capture
         self.timer = QTimer() 
         self.timer.start(25.0) 
@@ -73,7 +80,7 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
         self.curveY.attach(self.plot) 
         self.curveZ.attach(self.plot) 
         self.curveMag.attach(self.plot) 
-        self.plot.setAxisScale(Qwt.QwtPlot.yLeft, -2048, 2047)
+        self.plot.setAxisScale(Qwt.QwtPlot.yLeft, -8, 8)
 
         # pen color
         # http://doc.qt.io/qt-4.8/qpen.html
@@ -94,7 +101,7 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
         self.curveY_capture.attach(self.previewPlot) 
         self.curveZ_capture.attach(self.previewPlot) 
         self.curveMag_capture.attach(self.previewPlot) 
-        self.previewPlot.setAxisScale(Qwt.QwtPlot.yLeft, -2048, 2047)
+        self.previewPlot.setAxisScale(Qwt.QwtPlot.yLeft, -8, 8)
 
         self.curveX_capture.setPen(QPen(Qt.blue, 1, Qt.SolidLine))
         self.curveY_capture.setPen(QPen(Qt.darkMagenta, 1, Qt.SolidLine))
@@ -131,9 +138,9 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
         data = self.listener.grab()
         for d in data:
             self.t.append(self.counter)
-            x = int(d['x'])
-            y = int(d['y'])
-            z = int(d['z'])
+            x = float(d['x'])
+            y = float(d['y'])
+            z = float(d['z'])
             self.x.append(x)
             self.y.append(y)
             self.z.append(z)
@@ -157,6 +164,17 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
             estimated_rate = self.counter - self.last_count
             self.rateLabel.setText("%d samples per second" % estimated_rate)
         self.last_count = self.counter
+
+    #######################################################################
+    # calibration
+
+    def calibration_changed(self):
+        self.listener.set_x_scaling(self.xCalScaling.value())
+        self.listener.set_y_scaling(self.yCalScaling.value())
+        self.listener.set_z_scaling(self.zCalScaling.value())
+        self.listener.set_x_offset(self.xCalOffset.value())
+        self.listener.set_y_offset(self.yCalOffset.value())
+        self.listener.set_z_offset(self.zCalOffset.value())
 
     #######################################################################
     # capture
