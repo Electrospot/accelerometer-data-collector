@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_plot.ui'
 #
-# Created: Mon May 18 12:42:13 2015
+# Created: Mon May 18 13:41:58 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -44,6 +44,9 @@ class Ui_SamplerWindow(object):
         self.sampleName = QtGui.QComboBox(self.groupBox)
         self.sampleName.setEditable(True)
         self.sampleName.setObjectName(_fromUtf8("sampleName"))
+        self.sampleName.addItem(_fromUtf8(""))
+        self.sampleName.addItem(_fromUtf8(""))
+        self.sampleName.addItem(_fromUtf8(""))
         self.sampleName.addItem(_fromUtf8(""))
         self.sampleName.addItem(_fromUtf8(""))
         self.sampleName.addItem(_fromUtf8(""))
@@ -246,10 +249,23 @@ class Ui_SamplerWindow(object):
         self.menubar = QtGui.QMenuBar(SamplerWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1151, 20))
         self.menubar.setObjectName(_fromUtf8("menubar"))
+        self.menuFile = QtGui.QMenu(self.menubar)
+        self.menuFile.setObjectName(_fromUtf8("menuFile"))
         SamplerWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(SamplerWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
         SamplerWindow.setStatusBar(self.statusbar)
+        self.actionSave_Profile_As = QtGui.QAction(SamplerWindow)
+        self.actionSave_Profile_As.setObjectName(_fromUtf8("actionSave_Profile_As"))
+        self.actionOpen_Profile = QtGui.QAction(SamplerWindow)
+        self.actionOpen_Profile.setObjectName(_fromUtf8("actionOpen_Profile"))
+        self.actionQuit = QtGui.QAction(SamplerWindow)
+        self.actionQuit.setObjectName(_fromUtf8("actionQuit"))
+        self.menuFile.addAction(self.actionSave_Profile_As)
+        self.menuFile.addAction(self.actionOpen_Profile)
+        self.menuFile.addSeparator()
+        self.menuFile.addAction(self.actionQuit)
+        self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(SamplerWindow)
         QtCore.QMetaObject.connectSlotsByName(SamplerWindow)
@@ -257,12 +273,15 @@ class Ui_SamplerWindow(object):
     def retranslateUi(self, SamplerWindow):
         SamplerWindow.setWindowTitle(_translate("SamplerWindow", "Mame Sampler", None))
         self.groupBox.setTitle(_translate("SamplerWindow", "Output Options", None))
-        self.sampleName.setItemText(0, _translate("SamplerWindow", "test1", None))
-        self.sampleName.setItemText(1, _translate("SamplerWindow", "test2", None))
-        self.sampleName.setItemText(2, _translate("SamplerWindow", "test3", None))
+        self.sampleName.setItemText(0, _translate("SamplerWindow", "test", None))
+        self.sampleName.setItemText(1, _translate("SamplerWindow", "flat_on_table", None))
+        self.sampleName.setItemText(2, _translate("SamplerWindow", "holding_steady", None))
+        self.sampleName.setItemText(3, _translate("SamplerWindow", "bang_on_table", None))
+        self.sampleName.setItemText(4, _translate("SamplerWindow", "drop_on_table", None))
+        self.sampleName.setItemText(5, _translate("SamplerWindow", "pick_up_table", None))
         self.label.setText(_translate("SamplerWindow", "Directory", None))
         self.label_5.setText(_translate("SamplerWindow", "Sample Name", None))
-        self.outputDirectory.setText(_translate("SamplerWindow", "/home/tato/accel-data/", None))
+        self.outputDirectory.setText(_translate("SamplerWindow", "~/accel-data/", None))
         self.groupBox_3.setTitle(_translate("SamplerWindow", "Capture", None))
         self.label_2.setText(_translate("SamplerWindow", "Num Samples", None))
         self.numSamples.setSuffix(_translate("SamplerWindow", " samples", None))
@@ -284,5 +303,12 @@ class Ui_SamplerWindow(object):
         self.label_15.setText(_translate("SamplerWindow", ")", None))
         self.groupBox_2.setTitle(_translate("SamplerWindow", "Log", None))
         self.rateLabel.setText(_translate("SamplerWindow", "x samples/second", None))
+        self.menuFile.setTitle(_translate("SamplerWindow", "File", None))
+        self.actionSave_Profile_As.setText(_translate("SamplerWindow", "Save Profile As...", None))
+        self.actionSave_Profile_As.setShortcut(_translate("SamplerWindow", "Ctrl+S", None))
+        self.actionOpen_Profile.setText(_translate("SamplerWindow", "Open Profile", None))
+        self.actionOpen_Profile.setShortcut(_translate("SamplerWindow", "Ctrl+O", None))
+        self.actionQuit.setText(_translate("SamplerWindow", "Quit", None))
+        self.actionQuit.setShortcut(_translate("SamplerWindow", "Ctrl+Q", None))
 
 from PyQt4.Qwt5 import *

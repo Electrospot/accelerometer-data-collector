@@ -124,10 +124,10 @@ class Ui_Sampler_MainWindow(ui_plot.Ui_SamplerWindow):
         directory   = self.outputDirectory.text()
         sample_name = self.sampleName.currentText()
         count = 1
-        filename = "%s/%s-%03d.txt" % (directory, sample_name, count)
+        filename = os.path.expanduser("%s/%s-%03d.txt" % (directory, sample_name, count))
         while os.path.isfile(filename):
             count = count + 1
-            filename = "%s/%s-%03d.txt" % (directory, sample_name, count)
+            filename = os.path.expanduser("%s/%s-%03d.txt" % (directory, sample_name, count))
         self.last_file_name = filename
         return filename
 
@@ -235,7 +235,7 @@ def write_xyz(file_name, t,x,y,z):
     assert t.size == y.size
     assert t.size == z.size
     for i in range(0,t.size):
-        f.write("%d\t%d\t%d\t%d\n" % (t[i], x[i], y[i], z[i]))
+        f.write("%0.4f\t%0.4f\t%0.4f\t%0.4f\n" % (t[i], x[i], y[i], z[i]))
     f.close()
 
 if __name__ == "__main__":

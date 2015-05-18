@@ -36,17 +36,32 @@
            </property>
            <item>
             <property name="text">
-             <string>test1</string>
+             <string>test</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>test2</string>
+             <string>flat_on_table</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>test3</string>
+             <string>holding_steady</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>bang_on_table</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>drop_on_table</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>pick_up_table</string>
             </property>
            </item>
           </widget>
@@ -68,7 +83,7 @@
          <item row="0" column="2">
           <widget class="QLineEdit" name="outputDirectory">
            <property name="text">
-            <string>/home/tato/accel-data/</string>
+            <string>~/accel-data/</string>
            </property>
           </widget>
          </item>
@@ -462,8 +477,42 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave_Profile_As"/>
+    <addaction name="actionOpen_Profile"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSave_Profile_As">
+   <property name="text">
+    <string>Save Profile As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionOpen_Profile">
+   <property name="text">
+    <string>Open Profile</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
