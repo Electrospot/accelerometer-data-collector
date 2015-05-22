@@ -1,6 +1,3 @@
-accelerometer-study
-===================
-
 Introduction
 ------------
 
