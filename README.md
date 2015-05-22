@@ -33,17 +33,17 @@ Accelerometers are often not perfectly calibrated and thus the application inclu
 ## User Flow
 
 Thus, the user flow of the application is:
-1.  User launches application, immediately sees live stream of data.	
-2.  User plays around with accelerometer and previews what kind of data the movement produces.
-3.  User sets the delay, and the sample size based on the previous step. Calibrates if necessary.
-4.  User clicks Start.
-5.  User or experimental subject gets ready during the delay time.
-6.  The movement is performed and data is collected.
-7.  User inspects the collected data.	
-  *   If okay, repeat from step 4.
-  *   If not, press cancel to delete most recent sample, and go back to step 3.
+1.    User launches application, immediately sees live stream of data.	
+2.    User plays around with accelerometer and previews what kind of data the movement produces.
+3.    User sets the delay, and the sample size based on the previous step. Calibrates if necessary.
+4.    User clicks Start.
+5.    User or experimental subject gets ready during the delay time.
+6.    The movement is performed and data is collected.
+7.    User inspects the collected data.	
+  *     If okay, repeat from step 4.
+  *     If not, press cancel to delete most recent sample, and go back to step 3.
 
 ## Etc.
 
-Check out the [Arduino library](https://github.com/tnishimura/ADXL345Arduino) for working with [SparkFun's ADXL345 Accelerometer breakout board](https://www.sparkfun.com/products/9836).
+Check out the [Arduino library](https://github.com/tnishimura/ADXL345Arduino) I wrote for working with [SparkFun's ADXL345 Accelerometer breakout board](https://www.sparkfun.com/products/9836).
 
