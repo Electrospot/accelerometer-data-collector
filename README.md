@@ -33,6 +33,7 @@ Accelerometers are often not perfectly calibrated and thus the application inclu
 ## User Flow
 
 Thus, the user flow of the application is:
+
 1.    User launches application, immediately sees live stream of data.	
 2.    User plays around with accelerometer and previews what kind of data the movement produces.
 3.    User sets the delay, and the sample size based on the previous step. Calibrates if necessary.
